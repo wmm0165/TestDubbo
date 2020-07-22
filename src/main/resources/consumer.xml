@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://code.alibabatech.com/schema/dubbo
+       http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+    <dubbo:application name="consumer"/>
+<!--    <dubbo:registry address="zookeeper://10.1.1.120:2181"/>-->
+<!--    服务消费者，注意远程服务接口如果指定组的话，要指定group-->
+    <dubbo:reference id="iUser" interface="com.ipharmacare.systemcenter.interfaces.auth.IUser" url="dubbo://10.1.1.120:20984"/>
+    <dubbo:reference id="auditApi" interface="com.ipharmacare.engine.api.run.AuditApi" url="dubbo://10.1.1.120:20983/" group="intervene"/>
+</beans>
